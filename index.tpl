@@ -1,0 +1,39 @@
+<header>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</header>
+
+%if name == 'World':
+    <h1>Hello {{name}}!</h1>
+    <p>This is a test.</p>
+%else:
+    <h1>Hello {{name.title()}}!</h1>
+    <p>How are you?</p>
+%end
+
+
+<img
+    hx-trigger="click"
+    hx-post="/ping"
+src="/static/images/hydrant_1701.png">
+
+<img hx-trigger="click" hx-get="/ping">
+
+<button>Button</button>
+
+<main class="kacca">
+
+<div class="grid">
+
+    % for i in range(9):
+        <div
+            hx-trigger="click"
+            hx-post="/submitImage/{{i}}"
+            hx-swap="innerHTML swap:2s"><img id="gridcell_{{i}}" src="/static/images/hydrant_1758.png">
+        </div>
+    % end
+
+    </div>
+
+</main>
