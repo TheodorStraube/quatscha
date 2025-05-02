@@ -10,9 +10,14 @@ app = Bottle()
 alle_bilder = list(p.name for p in Path('assets/images/').iterdir())
 print(alle_bilder[:2])
 
-@get('/')
-@view('index.tpl')
+@route('/')
+@view('mainmenu.html')
 def index():
+    return {"modes": [("Kreativ xd", "/quatscha")]}
+
+@route('/quatscha')
+@view('index.html') 
+def index(): 
     return {"name": "Brigitte"}
 
 

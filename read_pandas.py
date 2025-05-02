@@ -12,7 +12,7 @@ def write_img(series: pd.Series):
     path = Path('assets/images/')
     path.mkdir(parents=True, exist_ok=True)
 
-    for _nr , row in series.iterrows():
+    for _nr, row in series.iterrows():
         img_dict, classes = row
 
         img_name = img_dict['path']
@@ -22,5 +22,4 @@ def write_img(series: pd.Series):
         with open(path / img_name, 'wb') as img_file:
             img_file.write(img_bytes)
         
-        print(_nr, path / img_name, classes)
 
